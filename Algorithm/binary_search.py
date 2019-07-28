@@ -14,39 +14,39 @@ import random
 # 递归方式：传入被查找列表，以及需要查找的数
 def binary1(querynum, lis):
     mid = len(lis) // 2
-    # 第一个判断条件是查看是否为最后一个子表，如果所查找之数且不等于最后一个数，则查找不成功
-    if len(lis) == 1 and querynum != lis[0]:
-        print('所查找的数不在该列表中')
+    # 直到子表不存在为止，此时查找不成功
+    if not lis:
+        print('所查找的数{}不在该列表中'.format(querynum))
     elif querynum == lis[mid]:
-        print('查找成功')
+        print('{}查找成功'.format(querynum))
     elif querynum < lis[mid]:
         binary1(querynum, lis[:mid])
     # elif querynum > lis[mid]:
     else:
-        binary1(querynum, lis[mid:])
+        binary1(querynum, lis[mid+1:])
 
 
 # 非递归方式：传入被查找列表，以及需要查找的数
 def binary2(querynum, lis):
     while True:
         mid = len(lis) // 2
-        # 第一个判断条件是查看是否为最后一个子表，如果所查找之数且不等于最后一个数，则查找不成功
-        if len(lis) == 1 and querynum != lis[0]:
-            print('所查找的数不在该列表中')
+        # 直到子表不存在为止，此时查找不成功
+        if not lis:
+            print('所查找的数{}不在该列表中'.format(querynum))
             break
         elif querynum == lis[mid]:
-            print('查找成功')
+            print('{}查找成功'.format(querynum))
             break
         elif querynum < lis[mid]:
             lis = lis[:mid]
             continue
         # elif querynum > lis[mid]:
         else:
-            lis = lis[mid:]
+            lis = lis[mid+1:]
             continue
 
 
-list1 = list(range(1, 100))  # 生成1到100的列表
+list1 = list(range(1, 1000))  # 生成1到1000的列表
 list2 = random.sample(list1, 21)  # 从列表1里面挑选21个随机不重复的数
 list3 = sorted(list2)  # 按升序排序得到列表3
 print('查找列表:', list3)
