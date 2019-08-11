@@ -1976,5 +1976,5 @@ function getEncryptedData(method, city, type, startTime, endTime) {
     param.type = type;
     param.startTime = startTime;
     param.endTime = endTime;
-    return getdecodeDataParam(method, param);
+    return getParam(method, param);
 }
